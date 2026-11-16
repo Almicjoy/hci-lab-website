@@ -1,0 +1,5 @@
+import type { Metadata } from 'next';
+import { projects, site } from '@/data/site';
+import { PageIntro, TextLink } from '@/components/ui';
+export const metadata:Metadata={title:'Research & Projects'};
+export default function Research(){return <><PageIntro eyebrow="Research & projects" title="Ideas translated into action." description="Explore the laboratory’s research initiatives and associated projects."/><section className="section container"><div className="research-list">{projects.map((p,i)=><article className="research-item" key={p.title}><div className={`research-thumb visual-${i%3}`}><span>0{i+1}</span></div><div><span className="card-kicker">{p.category}</span><h2>{p.title}</h2><p>{p.description}</p>{p.title==='WithYou'&&site.withYouUrl?<TextLink href={site.withYouUrl} external>Visit project website</TextLink>:p.href?<TextLink href={p.href} external={p.external}>Project details</TextLink>:<span className="muted small">More information to follow</span>}</div></article>)}</div></section></>}
