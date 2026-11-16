@@ -2,32 +2,53 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { UserRound, ExternalLink } from "lucide-react";
+import { getLocale, getTranslations } from "next-intl/server";
 
-import { members } from "@/data/site";
+import { members, type Locale } from "@/data/site";
 import { PageIntro } from "@/components/ui";
 
-export const metadata: Metadata = {
-  title: "People",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
 
-export default function People() {
+  const t = await getTranslations({
+    locale,
+    namespace: "People",
+  });
+
+  return {
+    title: t("metadataTitle"),
+    description: t("introDescription"),
+  };
+}
+
+export default async function People() {
+  const t = await getTranslations("People");
+  const locale = (await getLocale()) as Locale;
+
   return (
     <>
+      {/* Page Introduction */}
       <PageIntro
-        eyebrow="Our people"
-        title="The people behind the research."
-        description="Meet the faculty, researchers, and students contributing to the laboratory."
+        eyebrow={t("introEyebrow")}
+        title={t("introTitle")}
+        description={t("introDescription")}
       />
 
+      {/* Laboratory Members */}
       <section className="section container">
         <div className="people-grid">
           {members.map((m, i) => (
             <article className="person-card" key={i}>
+              {/* Member Photo */}
               <div className="person-photo">
                 {m.image ? (
                   <Image
                     src={m.image}
-                    alt={`Portrait of ${m.name}`}
+                    alt={t("portraitAlt", { name: m.name })}
                     width={400}
                     height={400}
                     className="h-full w-full object-cover"
@@ -37,13 +58,17 @@ export default function People() {
                 )}
               </div>
 
+              {/* Member Information */}
               <div className="person-body">
-                <span className="card-kicker">{m.role}</span>
+                <span className="card-kicker">
+                  {m.role[locale]}
+                </span>
 
                 <h2>{m.name}</h2>
 
-                <p>{m.bio}</p>
+                <p>{m.bio[locale]}</p>
 
+                {/* External Links */}
                 <div className="social-links">
                   {m.links?.map((link) => (
                     <a

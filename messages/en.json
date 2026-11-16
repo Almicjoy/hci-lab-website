@@ -1,0 +1,103 @@
+{
+  "Home": {
+    "researchLaboratory": "Research Laboratory",
+    "heroTitle": "Innovation begins with",
+    "heroHighlight": "people.",
+    "heroDescription": "We explore research and innovation that connects technology with the needs of people and communities.",
+    "exploreResearch": "Explore our research",
+    "meetTeam": "Meet our team",
+    "heroArtLabel": "HUMAN / TECHNOLOGY / SOCIETY",
+    "research": "RESEARCH",
+    "collaboration": "COLLABORATION",
+    "impact": "IMPACT",
+    "purposeEyebrow": "01 / Our purpose",
+    "purposeTitle": "Technology shaped around human needs.",
+    "purposeDescription": "We explore research and innovation that connects technology with the needs of people and communities.",
+    "purposeDetail": "This is introductory placeholder text. Replace it with the laboratory's approved mission statement, research focus, and institutional description.",
+    "moreAbout": "More about the laboratory",
+    "projectsEyebrow": "02 / What we do",
+    "projectsTitle": "Research & initiatives",
+    "allProjects": "All projects",
+    "visitWithYou": "Visit WithYou",
+    "learnMore": "Learn more",
+    "comingSoon": "Details coming soon",
+    "peopleEyebrow": "03 / The people",
+    "peopleTitle": "Meet our researchers",
+    "fullTeam": "Full team",
+    "collaborateEyebrow": "Let's collaborate",
+    "collaborateTitle": "Building meaningful connections through research.",
+    "getInTouch": "Get in touch"
+  },
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "research": "Research",
+    "people": "People",
+    "publications": "Publications",
+    "contact": "Contact"
+  },
+  "Footer": {
+    "description": "Research, collaboration, and human-centered innovation.",
+    "explore": "Explore",
+    "researchProjects": "Research & projects",
+    "ourPeople": "Our people",
+    "publications": "Publications",
+    "connect": "Connect",
+    "contact": "Contact",
+    "copyrightNotice": "Website content subject to laboratory approval."
+  },
+  "About": {
+    "metadataTitle": "About",
+    "introEyebrow": "About the laboratory",
+    "introTitle": "Human-centered research. Real-world impact.",
+    "introDescription": "Learn about our vision, approach, and the questions that guide our work.",
+    "missionEyebrow": "Our mission",
+    "missionTitle": "Connecting research, technology, and society.",
+    "missionDescription": "Our work puts human needs and lived experiences at the center of innovation.",
+    "missionDetail": "Replace this placeholder with the professor-approved laboratory mission, background, research methods, and objectives. Avoid publishing unverified claims about affiliations or achievements.",
+    "approachEyebrow": "Our approach",
+    "approachTitle": "Guiding principles",
+    "humanCenteredTitle": "Human-centered",
+    "humanCenteredDescription": "Designing with the people and communities who use technology.",
+    "interdisciplinaryTitle": "Interdisciplinary",
+    "interdisciplinaryDescription": "Connecting perspectives across research and practice.",
+    "impactTitle": "Impact-oriented",
+    "impactDescription": "Exploring useful, responsible approaches to real-world challenges."
+  },
+  "Contact": {
+    "metadataTitle": "Contact",
+    "introEyebrow": "Contact & collaboration",
+    "introTitle": "Let's connect.",
+    "introDescription": "Interested in our research, collaboration, or learning more about the laboratory?",
+    "getInTouch": "Get in touch",
+    "contactDescription": "For research inquiries, potential partnerships, or general questions, contact the laboratory through its approved institutional address.",
+    "emailPending": "Public contact email to be confirmed.",
+    "location": "Kyoto, Japan",
+    "addressPending": "Add the approved campus, building, and postal address before publication."
+  },
+  "People": {
+    "metadataTitle": "People",
+    "introEyebrow": "Our people",
+    "introTitle": "The people behind the research.",
+    "introDescription": "Meet the faculty, researchers, and students contributing to the laboratory.",
+    "portraitAlt": "Portrait of {name}"
+  },
+  "Publications": {
+    "metadataTitle": "Publications",
+    "introEyebrow": "Publications",
+    "introTitle": "Research outputs & publications.",
+    "introDescription": "Selected publications, presentations, and other research outputs from the laboratory.",
+    "emptyTitle": "Publications will appear here.",
+    "emptyDescription": "Add approved entries to <code>src/data/site.ts</code> to populate this page.",
+    "viewPublication": "View publication"
+  },
+  "Research": {
+    "metadataTitle": "Research & Projects",
+    "introEyebrow": "Research & projects",
+    "introTitle": "Ideas translated into action.",
+    "introDescription": "Explore the laboratory's research initiatives and associated projects.",
+    "visitProject": "Visit project website",
+    "projectDetails": "Project details",
+    "comingSoon": "More information to follow"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "Home": {
+    "researchLaboratory": "研究室",
+    "heroTitle": "イノベーションは",
+    "heroHighlight": "人から始まる。",
+    "heroDescription": "私たちは、テクノロジーと人々や地域社会のニーズを結びつける研究とイノベーションに取り組んでいます。",
+    "exploreResearch": "研究内容を見る",
+    "meetTeam": "メンバーを見る",
+    "heroArtLabel": "人間 / テクノロジー / 社会",
+    "research": "研究",
+    "collaboration": "協働",
+    "impact": "社会的インパクト",
+    "purposeEyebrow": "01 / 私たちの理念",
+    "purposeTitle": "人々のニーズを中心に据えたテクノロジー。",
+    "purposeDescription": "私たちは、テクノロジーと人々や地域社会のニーズを結びつける研究とイノベーションに取り組んでいます。",
+    "purposeDetail": "この文章は仮の紹介文です。研究室の正式な理念、研究分野、大学における位置づけなどを記載してください。",
+    "moreAbout": "研究室について詳しく見る",
+    "projectsEyebrow": "02 / 研究活動",
+    "projectsTitle": "研究・プロジェクト",
+    "allProjects": "すべてのプロジェクト",
+    "visitWithYou": "WithYouのサイトを見る",
+    "learnMore": "詳しく見る",
+    "comingSoon": "詳細は近日公開予定",
+    "peopleEyebrow": "03 / メンバー",
+    "peopleTitle": "研究メンバーの紹介",
+    "fullTeam": "すべてのメンバー",
+    "collaborateEyebrow": "共同研究・連携",
+    "collaborateTitle": "研究を通じて、意義のあるつながりを築きます。",
+    "getInTouch": "お問い合わせ"
+  },
+  "Navigation": {
+    "home": "ホーム",
+    "about": "研究室について",
+    "research": "研究",
+    "people": "メンバー",
+    "publications": "研究業績",
+    "contact": "お問い合わせ"
+  },
+  "Footer": {
+    "description": "研究、協働、そして人間中心のイノベーション。",
+    "explore": "サイト案内",
+    "researchProjects": "研究・プロジェクト",
+    "ourPeople": "研究メンバー",
+    "publications": "研究業績",
+    "connect": "お問い合わせ・連携",
+    "contact": "お問い合わせ",
+    "copyrightNotice": "ウェブサイトの内容は研究室の承認を経て公開されます。"
+  },
+  "About": {
+    "metadataTitle": "研究室について",
+    "introEyebrow": "研究室について",
+    "introTitle": "人間中心の研究で、社会に新たな価値を。",
+    "introDescription": "私たちのビジョン、研究アプローチ、そして研究活動を支える基本的な問いについてご紹介します。",
+    "missionEyebrow": "私たちの使命",
+    "missionTitle": "研究・テクノロジー・社会をつなぐ。",
+    "missionDescription": "私たちは、人々のニーズや実際の生活経験をイノベーションの中心に据えています。",
+    "missionDetail": "この文章は仮の内容です。研究室の正式な理念、背景、研究手法、目標などについて、担当教員の承認を得た文章に置き換えてください。所属や実績に関する未確認の情報は掲載しないでください。",
+    "approachEyebrow": "私たちのアプローチ",
+    "approachTitle": "研究の基本理念",
+    "humanCenteredTitle": "人間中心",
+    "humanCenteredDescription": "テクノロジーを利用する人々や地域社会とともに、より良い仕組みを考えます。",
+    "interdisciplinaryTitle": "学際的な研究",
+    "interdisciplinaryDescription": "研究と実践のさまざまな視点を結びつけます。",
+    "impactTitle": "社会的インパクト",
+    "impactDescription": "現実社会の課題に対して、実用的かつ責任あるアプローチを探求します。"
+  },
+  "Contact": {
+    "metadataTitle": "お問い合わせ",
+    "introEyebrow": "お問い合わせ・共同研究",
+    "introTitle": "お気軽にお問い合わせください。",
+    "introDescription": "研究内容や共同研究、研究室についてのご質問などがございましたら、お気軽にご連絡ください。",
+    "getInTouch": "お問い合わせ",
+    "contactDescription": "研究に関するお問い合わせ、共同研究・連携のご相談、その他のご質問は、研究室の正式な連絡先までお願いいたします。",
+    "emailPending": "公開用の連絡先メールアドレスは現在確認中です。",
+    "location": "日本・京都市",
+    "addressPending": "公開前に、承認済みのキャンパス名、建物名、郵便番号および住所を記載してください。"
+  },
+  "People": {
+    "metadataTitle": "メンバー",
+    "introEyebrow": "研究メンバー",
+    "introTitle": "研究を支える人々。",
+    "introDescription": "研究室の活動に携わる教員、研究者、学生をご紹介します。",
+    "portraitAlt": "{name}のプロフィール写真"
+  },
+  "Publications": {
+    "metadataTitle": "研究業績",
+    "introEyebrow": "研究業績",
+    "introTitle": "研究成果・発表論文",
+    "introDescription": "研究室の主な論文、学会発表、その他の研究成果をご紹介します。",
+    "emptyTitle": "研究業績は今後掲載予定です。",
+    "emptyDescription": "このページに研究業績を表示するには、<code>src/data/site.ts</code> に承認済みの情報を追加してください。",
+    "viewPublication": "論文を見る"
+  },
+  "Research": {
+    "metadataTitle": "研究・プロジェクト",
+    "introEyebrow": "研究・プロジェクト",
+    "introTitle": "アイデアを、社会での実践へ。",
+    "introDescription": "研究室が取り組む研究活動や関連プロジェクトをご紹介します。",
+    "visitProject": "プロジェクトのウェブサイトを見る",
+    "projectDetails": "プロジェクトの詳細を見る",
+    "comingSoon": "詳細は今後掲載予定です"
+  }
+}
