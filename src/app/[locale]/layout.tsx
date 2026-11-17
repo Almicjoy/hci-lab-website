@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { Locale } from "@/data/site";
+import { Source_Serif_4, Source_Sans_3 } from "next/font/google";
 
 import type { ReactNode } from "react";
 
@@ -57,7 +58,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body>
+      <body className={`${headingFont.variable} ${bodyFont.variable}`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />
           <main>{children}</main>
@@ -67,3 +68,15 @@ export default async function LocaleLayout({
     </html>
   );
 }
+
+const headingFont = Source_Serif_4({
+  subsets: ["latin"],
+  variable: "--font-heading",
+  display: "swap",
+});
+
+const bodyFont = Source_Sans_3({
+  subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
+});

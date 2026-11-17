@@ -10,6 +10,17 @@ export type LocalizedText = {
   ja: string;
 };
 
+export type MemberCategory =
+  | "faculty"
+  | "postdoc"
+  | "phd"
+  | "masters"
+  | "undergraduate"
+  | "staff"
+  | "collaborator";
+
+
+
 /* ----------------------------------------
    Laboratory Information
 ---------------------------------------- */
@@ -44,14 +55,16 @@ export const site = {
 ---------------------------------------- */
 
 export type Member = {
+  id: string;
   name: string;
-
+  nameJa?: string;
+  category: MemberCategory;
   role: LocalizedText;
-
-  bio: LocalizedText;
-
+  affiliation?: LocalizedText;
+  bio?: LocalizedText;
+  researchInterests?: LocalizedText[];
   image?: string;
-
+  email?: string;
   links?: {
     label: string;
     url: string;
@@ -60,51 +73,78 @@ export type Member = {
 
 export const members: Member[] = [
   {
-    name: "Faculty Member",
+    id: "spring-han",
+    name: "Spring H. Han",
+    category: "faculty",
 
     role: {
-      en: "Principal Investigator",
-      ja: "研究代表者",
+      en: "Professor",
+      ja: "教授",
     },
 
-    bio: {
-      en: "Add the faculty member's approved biography and research interests.",
-      ja: "教員の承認済みの経歴および研究分野を記載してください。",
+    affiliation: {
+      en: "Graduate School of Management, Kyoto University",
+      ja: "京都大学大学院工学研究科",
+    },
+    researchInterests: [
+      {
+        en: "Service Marketing",
+        ja: "サービスマーケティング",
+      },
+      {
+        en: "Hospitality Management",
+        ja: "ホスピタリティ管理",
+      },
+    ],
+
+    links: [],
+  },
+  {
+    id: "nguyen-van-tung",
+    name: "Nguyen Van Tung",
+    category: "masters",
+
+    role: {
+      en: "Research Assistant",
+      ja: "修士2年",
+    },
+
+    affiliation: {
+      en: "Graduate School of Economics, Kyoto University",
+      ja: "京都大学大学院経済学研究科",
     },
 
     links: [],
   },
-
   {
-    name: "Research Member",
+    id: "alessa-castillo",
+    name: "Alessa Castillo",
+    nameJa: "キャスティーオ・アレサ",
+    category: "staff",
 
     role: {
-      en: "Researcher",
-      ja: "研究員",
+      en: "Technical Assistant",
+      ja: "技術補佐員",
     },
 
-    bio: {
-      en: "Add the researcher's approved biography and research interests.",
-      ja: "研究員の承認済みの経歴および研究分野を記載してください。",
+    affiliation: {
+      en: "Graduate School of Engineering, Kyoto University",
+      ja: "京都大学大学院工学研究科",
     },
+    researchInterests: [
+      {
+        en: "Human-Computer Interaction",
+        ja: "ヒューマンコンピュータインタラクション",
+      },
+      {
+        en: "Crowding Patterns and Transportation Systems",
+        ja: "混雑動態と交通システム",
+      },
+    ],
 
-    links: [],
-  },
-
-  {
-    name: "Student Member",
-
-    role: {
-      en: "Student Researcher",
-      ja: "学生研究員",
-    },
-
-    bio: {
-      en: "Add the student's approved biography and research interests.",
-      ja: "学生の承認済みの経歴および研究分野を記載してください。",
-    },
-
-    links: [],
+    links: [
+      {"label": "LinkedIn", "url": "https://www.linkedin.com/in/alessa-castillo-6030a2235/"}
+    ],
   },
 ];
 
@@ -114,35 +154,17 @@ export const members: Member[] = [
 
 export type Project = {
   title: string;
-
   category: LocalizedText;
-
   description: LocalizedText;
-
+  thumbnail?: string;
+  more_info?: LocalizedText;
   href?: string;
-
   external?: boolean;
 };
 
 export const projects: Project[] = [
   {
-    title: "WithYou",
-
-    category: {
-      en: "Featured initiative",
-      ja: "注目のプロジェクト",
-    },
-
-    description: {
-      en: "Introduce the WithYou project, its goals, and its connection to the laboratory here.",
-      ja: "WithYouプロジェクトの概要、目的、および研究室との関係について記載してください。",
-    },
-
-    external: true,
-  },
-
-  {
-    title: "Research Initiative",
+    title: "Human Link",
 
     category: {
       en: "Research",
@@ -150,10 +172,35 @@ export const projects: Project[] = [
     },
 
     description: {
-      en: "Add an approved summary of another current or planned laboratory initiative.",
-      ja: "現在進行中または計画中の研究プロジェクトについて、承認済みの概要を記載してください。",
+      en: "Research on Human Link identified the coexistence of everyday support needs and willingness to help others. These findings informed our role-mobility approach, in which participants take on receiving, helping, and connecting roles.",
+      ja: "ヒューマンリンクに関する研究では、日常生活における支援ニーズと他者を助けたいという意欲が共存していることが明らかになりました。これらの知見に基づき、参加者が支援を受ける役割、援助する役割、そして繋がりを築く役割の間を行き来する、役割移動型のアプローチを採用しました。",
     },
+
+    more_info: {
+      en: "The web prototype named WithYou is intended to facilitate individual matches, and measure whether a participant further acts in receiving, helping and connecting roles. It acts as an initial proof of concept involving approximately 30 participants provide a starting point for translating this potential into an organized service.",
+      ja: "「WithYou」と名付けられたこのウェブ・プロトタイプは、個人間のマッチングを成立させることを目的としており、参加者がその後、受け取る側、支援する側、あるいはつなぎ役としてどのような行動をとるかを測定するものです。約30名の参加者を対象としたこの取り組みは、概念実証（PoC）の第一歩であり、この可能性を体系的なサービスへと発展させていくための出発点となります。"
+    },
+
+    thumbnail: "/images/with-you-logo.png",
+
+    href: "https://withyou-worldwide.com/", // Add the approved WithYou website URL.
+
+    external: true,
   },
+
+  // {
+  //   title: "Research Initiative",
+
+  //   category: {
+  //     en: "Research",
+  //     ja: "研究",
+  //   },
+
+  //   description: {
+  //     en: "Add an approved summary of another current or planned laboratory initiative.",
+  //     ja: "現在進行中または計画中の研究プロジェクトについて、承認済みの概要を記載してください。",
+  //   },
+  // },
 ];
 
 /* ----------------------------------------

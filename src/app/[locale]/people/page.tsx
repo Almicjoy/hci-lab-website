@@ -1,10 +1,14 @@
 
 import type { Metadata } from "next";
 import Image from "next/image";
-import { UserRound, ExternalLink } from "lucide-react";
+import { ExternalLink, UserRound } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
 
-import { members, type Locale } from "@/data/site";
+import {
+  members,
+  type Locale,
+  type MemberCategory,
+} from "@/data/site";
 import { PageIntro } from "@/components/ui";
 
 export async function generateMetadata({
@@ -25,67 +29,160 @@ export async function generateMetadata({
   };
 }
 
+const categories: MemberCategory[] = [
+  "faculty",
+  "postdoc",
+  "phd",
+  "masters",
+  "undergraduate",
+  "staff",
+  "collaborator",
+];
+
 export default async function People() {
   const t = await getTranslations("People");
   const locale = (await getLocale()) as Locale;
 
+  const groups = categories
+    .map((category) => ({
+      category,
+      members: members.filter(
+        (member) => member.category === category
+      ),
+    }))
+    .filter((group) => group.members.length > 0);
+
   return (
     <>
-      {/* Page Introduction */}
       <PageIntro
         eyebrow={t("introEyebrow")}
         title={t("introTitle")}
         description={t("introDescription")}
       />
 
-      {/* Laboratory Members */}
-      <section className="section container">
-        <div className="people-grid">
-          {members.map((m, i) => (
-            <article className="person-card" key={i}>
-              {/* Member Photo */}
-              <div className="person-photo">
-                {m.image ? (
-                  <Image
-                    src={m.image}
-                    alt={t("portraitAlt", { name: m.name })}
-                    width={400}
-                    height={400}
-                    className="h-full w-full object-cover"
-                  />
-                ) : (
-                  <UserRound size={55} strokeWidth={1} />
-                )}
-              </div>
+      <section className="people-directory container">
+        <nav className="people-index">
+          <span>{t("directoryLabel")}</span>
 
-              {/* Member Information */}
-              <div className="person-body">
-                <span className="card-kicker">
-                  {m.role[locale]}
-                </span>
+          <div className="people-index-links">
+            {groups.map((group) => (
+              <a
+                key={group.category}
+                href={`#${group.category}`}
+              >
+                {t(`categories.${group.category}`)}
+              </a>
+            ))}
+          </div>
+        </nav>
 
-                <h2>{m.name}</h2>
+        {groups.map((group) => (
+          <section
+            className="people-group"
+            id={group.category}
+            key={group.category}
+          >
+            <div className="people-group-heading">
+              <h2>
+                {t(`categories.${group.category}`)}
+              </h2>
+              <span>{group.members.length}</span>
+            </div>
 
-                <p>{m.bio[locale]}</p>
+            <div className="people-list">
+              {group.members.map((member) => (
+                <article
+                  className="people-entry"
+                  key={member.id}
+                >
+                  <div className="people-entry-photo">
+                    {member.image ? (
+                      <Image
+                        src={member.image}
+                        alt={t("portraitAlt", {
+                          name: member.name,
+                        })}
+                        width={150}
+                        height={180}
+                      />
+                    ) : (
+                      <UserRound
+                        size={42}
+                        strokeWidth={1}
+                      />
+                    )}
+                  </div>
 
-                {/* External Links */}
-                <div className="social-links">
-                  {m.links?.map((link) => (
-                    <a
-                      key={link.url}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {link.label}
-                      <ExternalLink size={13} />
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
+                  <div className="people-entry-info">
+                    <h3>
+                      {locale === "ja" && member.nameJa
+                        ? member.nameJa
+                        : member.name}
+                    </h3>
+
+                    <p className="people-position">
+                      {member.role[locale]}
+                    </p>
+
+                    {member.affiliation && (
+                      <p className="people-affiliation">
+                        {member.affiliation[locale]}
+                      </p>
+                    )}
+
+                    {member.bio?.[locale] && (
+                      <p className="people-bio">
+                        {member.bio[locale]}
+                      </p>
+                    )}
+
+                    {member.researchInterests?.length ? (
+                      <div className="people-research">
+                        <strong>
+                          {t("researchInterests")}
+                        </strong>
+                        <p>
+                          {member.researchInterests
+                            .map(
+                              (interest) =>
+                                interest[locale]
+                            )
+                            .join(", ")}
+                        </p>
+                      </div>
+                    ) : null}
+
+                    {member.email && (
+                      <p className="people-email">
+                        <strong>{t("emailLabel")}: </strong>
+                        <a href={`mailto:${member.email}`}>
+                          {member.email}
+                        </a>
+                      </p>
+                    )}
+
+                    {member.links &&
+                      member.links.length > 0 && (
+                        <div className="people-links">
+                          {member.links.map((link) => (
+                            <a
+                              key={link.url}
+                              href={link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {link.label}
+                              <ExternalLink size={13} />
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        ))}
       </section>
     </>
   );

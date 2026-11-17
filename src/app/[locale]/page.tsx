@@ -18,9 +18,6 @@ export default async function Home() {
       <section className="hero">
         <div className="container hero-grid">
           <div>
-            <Eyebrow>
-              {site.university[locale]} · {t("researchLaboratory")}
-            </Eyebrow>
 
             <h1>
               {t("heroTitle")} <em>{t("heroHighlight")}</em>
@@ -58,11 +55,6 @@ export default async function Home() {
         </div>
         </div>
 
-        <div className="container hero-bottom">
-          <span>{t("research")}</span>
-          <span>{t("collaboration")}</span>
-          <span>{t("impact")}</span>
-        </div>
       </section>
 
       {/* Purpose Section */}

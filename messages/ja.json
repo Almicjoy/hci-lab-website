@@ -80,7 +80,19 @@
     "introEyebrow": "研究メンバー",
     "introTitle": "研究を支える人々。",
     "introDescription": "研究室の活動に携わる教員、研究者、学生をご紹介します。",
-    "portraitAlt": "{name}のプロフィール写真"
+    "portraitAlt": "{name}のプロフィール写真",
+    "directoryLabel": "メンバー一覧",
+    "researchInterests": "研究分野",
+    "emailLabel": "メール",
+    "categories": {
+      "faculty": "教員",
+      "staff": "研究・事務スタッフ",
+      "postdoc": "博士研究員",
+      "phd": "博士課程",
+      "masters": "修士課程",
+      "undergraduate": "学部生",
+      "collaborator": "共同研究者"
+    }
   },
   "Publications": {
     "metadataTitle": "研究業績",

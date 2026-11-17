@@ -32,7 +32,7 @@
     "home": "Home",
     "about": "About",
     "research": "Research",
-    "people": "People",
+    "people": "Members",
     "publications": "Publications",
     "contact": "Contact"
   },
@@ -78,9 +78,21 @@
   "People": {
     "metadataTitle": "People",
     "introEyebrow": "Our people",
-    "introTitle": "The people behind the research.",
+    "introTitle": "Members",
     "introDescription": "Meet the faculty, researchers, and students contributing to the laboratory.",
-    "portraitAlt": "Portrait of {name}"
+    "portraitAlt": "Portrait of {name}",
+    "directoryLabel": "Member Directory",
+    "researchInterests": "Research Interests",
+    "emailLabel": "Email",
+    "categories": {
+      "faculty": "Faculty",
+      "staff": "Research & Administrative Staff",
+      "postdoc": "Postdoctoral Researchers",
+      "phd": "Doctoral Students",
+      "masters": "Master's Students",
+      "undergraduate": "Undergraduate Students",
+      "collaborator": "Research Collaborators"
+    }
   },
   "Publications": {
     "metadataTitle": "Publications",
