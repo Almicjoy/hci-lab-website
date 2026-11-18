@@ -1,95 +1,124 @@
 
-import type { Metadata } from "next";
-import { Compass, Lightbulb, Users } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import { PageIntro } from "@/components/ui";
 
-import { PageIntro, Eyebrow } from "@/components/ui";
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({
-    locale,
-    namespace: "About",
-  });
-
-  return {
-    title: t("metadataTitle"),
-    description: t("introDescription"),
-  };
-}
-
-export default async function About() {
+export default async function AboutPage() {
   const t = await getTranslations("About");
 
   return (
-    <>
-      {/* Page Introduction */}
+    <main className="page-main academic-about-page">
       <PageIntro
         eyebrow={t("introEyebrow")}
         title={t("introTitle")}
         description={t("introDescription")}
       />
 
-      {/* Mission Section */}
-      <section className="section container split-section">
-        <div>
-          <Eyebrow>{t("missionEyebrow")}</Eyebrow>
+      <div className="container academic-about-content">
+        {/* Mission */}
+        <section
+          className="academic-about-section"
+          aria-labelledby="mission-heading"
+        >
+          <h2
+            className="academic-section-banner"
+            id="mission-heading"
+          >
+            {t("missionTitle")}
+          </h2>
 
-          <h2>{t("missionTitle")}</h2>
-        </div>
+          <div className="academic-section-body">
+            <h3 className="academic-subheading">
+              {t("missionSubtitle")}
+            </h3>
 
-        <div>
-          <p className="large-copy">
-            {t("missionDescription")}
-          </p>
-
-          <p className="muted">
-            {t("missionDetail")}
-          </p>
-        </div>
-      </section>
-
-      {/* Guiding Principles Section */}
-      <section className="section section-tinted">
-        <div className="container">
-          <Eyebrow>{t("approachEyebrow")}</Eyebrow>
-
-          <h2>{t("approachTitle")}</h2>
-
-          <div className="feature-grid">
-            {/* Human-Centered */}
-            <article>
-              <Users />
-
-              <h3>{t("humanCenteredTitle")}</h3>
-
-              <p>{t("humanCenteredDescription")}</p>
-            </article>
-
-            {/* Interdisciplinary */}
-            <article>
-              <Compass />
-
-              <h3>{t("interdisciplinaryTitle")}</h3>
-
-              <p>{t("interdisciplinaryDescription")}</p>
-            </article>
-
-            {/* Impact-Oriented */}
-            <article>
-              <Lightbulb />
-
-              <h3>{t("impactTitle")}</h3>
-
-              <p>{t("impactDescription")}</p>
-            </article>
+            <p>{t("missionDescription")}</p>
+            <p>{t("missionDetail")}</p>
           </div>
-        </div>
-      </section>
-    </>
+        </section>
+
+        {/* Research Approach */}
+        <section
+          className="academic-about-section"
+          aria-labelledby="approach-heading"
+        >
+          <h2
+            className="academic-section-banner"
+            id="approach-heading"
+          >
+            {t("approachTitle")}
+          </h2>
+
+          <div className="academic-section-body">
+            <h3 className="academic-subheading">
+              {t("approachSubtitle")}
+            </h3>
+
+            <p>{t("approachDescription")}</p>
+            <p>{t("approachDetail")}</p>
+          </div>
+        </section>
+
+        {/* Research Themes */}
+        <section
+          className="academic-about-section"
+          aria-labelledby="themes-heading"
+        >
+          <h2
+            className="academic-section-banner"
+            id="themes-heading"
+          >
+            {t("themesTitle")}
+          </h2>
+
+          <div className="academic-section-body">
+            <div className="academic-research-theme">
+              <h3 className="academic-subheading">
+                {t("humanLinkTitle")}
+              </h3>
+
+              <p>{t("humanLinkDescription")}</p>
+            </div>
+
+            <div className="academic-research-theme">
+              <h3 className="academic-subheading">
+                {t("roleMobilityTitle")}
+              </h3>
+
+              <p>{t("roleMobilityDescription")}</p>
+            </div>
+
+            <div className="academic-research-theme">
+              <h3 className="academic-subheading">
+                {t("serviceInnovationTitle")}
+              </h3>
+
+              <p>{t("serviceInnovationDescription")}</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Application */}
+        <section
+          className="academic-about-section"
+          aria-labelledby="application-heading"
+        >
+          <h2
+            className="academic-section-banner"
+            id="application-heading"
+          >
+            {t("applicationTitle")}
+          </h2>
+
+          <div className="academic-section-body">
+            <h3 className="academic-subheading">
+              {t("withYouTitle")}
+            </h3>
+
+            <p>{t("withYouDescription")}</p>
+            <p>{t("withYouDetail")}</p>
+          </div>
+        </section>
+      </div>
+    </main>
   );
 }

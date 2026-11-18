@@ -1,4 +1,5 @@
 import { getLocale, getTranslations } from "next-intl/server";
+import Image from "next/image";
 import type { Locale } from "@/data/site";
 
 import { Link } from "@/i18n/navigation";
@@ -11,42 +12,66 @@ export async function Footer() {
   return (
     <footer className="footer">
       <div className="container footer-grid">
+
         {/* Laboratory Information */}
         <div>
-          <div className="footer-brand">
+          <Link href="/" className="footer-brand">
             {site.name[locale]}
+          </Link>
+
+          <div className="footer-institution-logos">
+            <div className="footer-institution-logo">
+              {/* Kyoto University logo */}
+              <Image
+                src="/images/kyoto_university_logo_white.png"
+                alt="Kyoto University"
+                width={180}
+                height={55}
+                className="footer-logo-image"
+              />
+            </div>
+
+            <div className="footer-institution-logo">
+              {/* Graduate School of Management logo */}
+              <Image
+                src="/images/gsm_logo.jpeg"
+                alt="Kyoto University Graduate School of Management"
+                width={140}
+                height={55}
+                className="footer-logo-image"
+              />
+            </div>
           </div>
 
-          <p>{site.university[locale]}</p>
-
-          <p className="footer-note">
-            {t("description")}
-          </p>
         </div>
 
-        {/* Explore Links */}
-        <div>
+        {/* Explore */}
+        <nav aria-label="Explore">
           <strong>{t("explore")}</strong>
 
-          <Link href="/research">
-            {t("researchProjects")}
+          <Link href="/">
+            {t("home")}
+          </Link>
+
+          <Link href="/about">
+            {t("about")}
           </Link>
 
           <Link href="/people">
             {t("ourPeople")}
           </Link>
+        </nav>
+
+        {/* Research */}
+        <nav aria-label="Research">
+          <strong>{t("research")}</strong>
+
+          <Link href="/research">
+            {t("researchProjects")}
+          </Link>
 
           <Link href="/publications">
             {t("publications")}
-          </Link>
-        </div>
-
-        {/* Contact Links */}
-        <div>
-          <strong>{t("connect")}</strong>
-
-          <Link href="/contact">
-            {t("contact")}
           </Link>
 
           {site.withYouUrl && (
@@ -58,7 +83,17 @@ export async function Footer() {
               WithYou ↗
             </a>
           )}
-        </div>
+        </nav>
+
+        {/* Connect */}
+        <nav aria-label="Connect">
+          <strong>{t("connect")}</strong>
+
+          <Link href="/contact">
+            {t("contact")}
+          </Link>
+        </nav>
+
       </div>
 
       {/* Copyright */}

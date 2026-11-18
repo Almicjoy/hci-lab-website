@@ -1,33 +1,74 @@
 {
-  "Home": {
-    "researchLaboratory": "Research Laboratory",
-    "heroTitle": "Innovation begins with",
-    "heroHighlight": "people.",
-    "heroDescription": "We explore research and innovation that connects technology with the needs of people and communities.",
-    "exploreResearch": "Explore our research",
-    "meetTeam": "Meet our team",
-    "heroArtLabel": "HUMAN / TECHNOLOGY / SOCIETY",
-    "research": "RESEARCH",
-    "collaboration": "COLLABORATION",
-    "impact": "IMPACT",
-    "purposeEyebrow": "01 / Our purpose",
-    "purposeTitle": "Technology shaped around human needs.",
-    "purposeDescription": "We explore research and innovation that connects technology with the needs of people and communities.",
-    "purposeDetail": "This is introductory placeholder text. Replace it with the laboratory's approved mission statement, research focus, and institutional description.",
-    "moreAbout": "More about the laboratory",
-    "projectsEyebrow": "02 / What we do",
-    "projectsTitle": "Research & initiatives",
-    "allProjects": "All projects",
-    "visitWithYou": "Visit WithYou",
-    "learnMore": "Learn more",
-    "comingSoon": "Details coming soon",
-    "peopleEyebrow": "03 / The people",
-    "peopleTitle": "Meet our researchers",
-    "fullTeam": "Full team",
-    "collaborateEyebrow": "Let's collaborate",
-    "collaborateTitle": "Building meaningful connections through research.",
-    "getInTouch": "Get in touch"
+
+"Home": {
+  "researchLaboratory": "Research Laboratory",
+
+  "placeholder": "Image placeholder",
+
+  "academicHero": {
+    "overline": "Human-Centered Innovation Laboratory",
+    "title": "Research connecting people, technology, and society.",
+    "description": "We explore how technology and service innovation can strengthen human connections, respond to everyday social needs, and contribute to community well-being.",
+    "topic1": "Human Connections",
+    "topic2": "Community Well-Being",
+    "topic3": "Service Innovation",
+    "photoMain": "Laboratory research activities",
+    "photoSecondary": "Community and project activities"
   },
+
+  "aboutPreview": {
+    "label": "About the Laboratory",
+    "title": "Human-centered research for stronger communities.",
+    "lead": "The Human-Centered Innovation Laboratory explores how technology and service innovation can strengthen human connections and improve community well-being.",
+    "description": "Our research focuses on understanding everyday social needs, encouraging mutual support, and developing inclusive systems that enable individuals to connect, participate, and contribute to their communities. Combining social science, human-centered design, and digital service development, we investigate how people move between receiving support, helping others, and connecting people.",
+    "linkText": "More about the laboratory"
+  },
+
+  "newsTitle": "News & Updates",
+  "readMore": "Read more",
+  "noNews": "No announcements at this time.",
+
+  "newsletterKicker": "Laboratory Newsletter",
+  "inThisIssue": "In This Issue",
+  "downloadPdf": "Download Newsletter (PDF)",
+  "pdfSoon": "Newsletter PDF coming soon",
+
+  "activitiesTitle": "Activities",
+
+  "featuredTitle": "Featured Research",
+  "figure": "Figure",
+  "allProjects": "Explore all research projects",
+  "visitWithYou": "Visit WithYou",
+
+  "heroTitle": "Innovation begins with",
+  "heroHighlight": "people.",
+  "heroDescription": "We explore research and innovation that connects technology with the needs of people and communities.",
+  "exploreResearch": "Explore our research",
+  "meetTeam": "Meet our team",
+  "heroArtLabel": "HUMAN / TECHNOLOGY / SOCIETY",
+  "research": "RESEARCH",
+  "collaboration": "COLLABORATION",
+  "impact": "IMPACT",
+
+  "purposeEyebrow": "Our purpose",
+  "purposeTitle": "Technology shaped around human needs.",
+  "purposeDescription": "The Human-Centered Innovation Laboratory (HCI Lab) at Kyoto University explores how technology and service innovation can strengthen human connections and improve community well-being.",
+  "purposeDetail": "Our research focuses on understanding everyday social needs, encouraging mutual support, and developing inclusive systems that enable individuals to connect and contribute to their communities.",
+  "moreAbout": "More about the laboratory",
+
+  "projectsEyebrow": "02 / What we do",
+  "projectsTitle": "Research & initiatives",
+  "learnMore": "Learn more",
+  "comingSoon": "Details coming soon",
+
+  "peopleEyebrow": "03 / The people",
+  "peopleTitle": "Meet our researchers",
+  "fullTeam": "Full team",
+
+  "collaborateEyebrow": "Collaboration",
+  "collaborateTitle": "Building meaningful connections through research.",
+  "getInTouch": "Get in touch"
+},
   "Navigation": {
     "home": "Home",
     "about": "About",
@@ -44,26 +85,52 @@
     "publications": "Publications",
     "connect": "Connect",
     "contact": "Contact",
-    "copyrightNotice": "Website content subject to laboratory approval."
+    "copyrightNotice": "Website content subject to laboratory approval.",
+    "home": "Home",
+    "about": "About",
+    "research": "Research"
   },
-  "About": {
-    "metadataTitle": "About",
-    "introEyebrow": "About the laboratory",
-    "introTitle": "Human-centered research. Real-world impact.",
-    "introDescription": "Learn about our vision, approach, and the questions that guide our work.",
-    "missionEyebrow": "Our mission",
-    "missionTitle": "Connecting research, technology, and society.",
-    "missionDescription": "Our work puts human needs and lived experiences at the center of innovation.",
-    "missionDetail": "Replace this placeholder with the professor-approved laboratory mission, background, research methods, and objectives. Avoid publishing unverified claims about affiliations or achievements.",
-    "approachEyebrow": "Our approach",
-    "approachTitle": "Guiding principles",
-    "humanCenteredTitle": "Human-centered",
-    "humanCenteredDescription": "Designing with the people and communities who use technology.",
-    "interdisciplinaryTitle": "Interdisciplinary",
-    "interdisciplinaryDescription": "Connecting perspectives across research and practice.",
-    "impactTitle": "Impact-oriented",
-    "impactDescription": "Exploring useful, responsible approaches to real-world challenges."
-  },
+
+"About": {
+  "metadataTitle": "About",
+
+  "introEyebrow": "About the Laboratory",
+  "introTitle": "About the Laboratory",
+  "introDescription": "Research on human relationships, community well-being, and service innovation.",
+
+  "missionTitle": "Our Mission",
+  "missionSubtitle": "Understanding human relationships and the social foundations of mutual support",
+
+  "missionDescription": "The Human-Centered Innovation Laboratory investigates how people establish relationships, exchange assistance, and participate in their communities. Our research examines the social and behavioral mechanisms underlying everyday support, with particular attention to how human connections contribute to individual and community well-being.",
+
+  "missionDetail": "Contemporary social needs often extend beyond the boundaries of individual disciplines or institutions. Addressing these needs requires an understanding of people's experiences, social relationships, and the environments in which interactions occur. The laboratory brings together social science, human-centered design, and service innovation to investigate how communities can recognize support needs, mobilize available resources, and develop sustainable forms of mutual assistance.",
+
+  "approachTitle": "Research Approach",
+  "approachSubtitle": "Integrating social research with the design and evaluation of services",
+
+  "approachDescription": "Our research combines empirical investigation of human behavior and social relationships with the development of practical service models. We examine how individuals identify needs, decide whether to seek or provide assistance, and participate in social exchanges. Particular attention is given to the conditions that encourage continued participation and the formation of supportive relationships.",
+
+  "approachDetail": "Digital technology is considered a means of facilitating human interaction rather than replacing it. By making support needs and available community resources more visible, digital systems may help individuals connect and enable institutions to coordinate assistance. Our work investigates these possibilities while considering accessibility, trust, participant experience, and the organizational requirements of service delivery.",
+
+  "themesTitle": "Research Themes",
+
+  "humanLinkTitle": "Community-Based Mutual Support and Human Link",
+  "humanLinkDescription": "The Human Link research examines the relationship between everyday support needs, people's willingness to assist others, and community well-being. It investigates how ordinary interactions can become opportunities for reciprocal assistance and how relationships developed through these exchanges may contribute to more supportive communities.",
+
+  "roleMobilityTitle": "Role Mobility and Social Participation",
+  "roleMobilityDescription": "Individuals do not necessarily remain in fixed roles as recipients or providers of support. Depending on their circumstances, experiences, and relationships, they may receive assistance, help others, or connect people who can support one another. Our research examines these transitions, referred to as role mobility, and the social conditions that enable individuals to participate in multiple forms of mutual support.",
+
+  "serviceInnovationTitle": "Human-Centered Service Innovation",
+  "serviceInnovationDescription": "The laboratory studies how social research can inform the design of services that respond to everyday needs. This includes investigating relationship-aware matching, coordination between participants and institutions, and approaches to evaluating service accessibility, participation, and continuity. The aim is to understand how technological and organizational arrangements can support meaningful human interaction.",
+
+  "applicationTitle": "Research in Practice",
+
+  "withYouTitle": "WithYou: University Peer Support",
+  "withYouDescription": "WithYou is a proposed university peer-support service informed by the Human Link research. It focuses on the everyday challenges experienced by international students preparing to arrive in Japan and adjusting to university and community life. The project explores how students can connect with peers who are able to provide practical assistance and share relevant experiences.",
+
+  "withYouDetail": "A central research question is whether students who initially receive assistance can subsequently become supporters themselves. The project investigates how matching, participant preparation, institutional coordination, and continuing engagement can contribute to a sustainable support network. The WithYou prototype and preliminary proof-of-concept activities provide a basis for further evaluation of this approach."
+}
+,
   "Contact": {
     "metadataTitle": "Contact",
     "introEyebrow": "Contact & collaboration",
@@ -94,21 +161,28 @@
       "collaborator": "Research Collaborators"
     }
   },
-  "Publications": {
-    "metadataTitle": "Publications",
-    "introEyebrow": "Publications",
-    "introTitle": "Research outputs & publications.",
-    "introDescription": "Selected publications, presentations, and other research outputs from the laboratory.",
-    "emptyTitle": "Publications will appear here.",
-    "emptyDescription": "Add approved entries to <code>src/data/site.ts</code> to populate this page.",
-    "viewPublication": "View publication"
-  },
+"Publications": {
+  "metadataTitle": "Publications | HCI Lab",
+  "introEyebrow": "Academic Output",
+  "introTitle": "Publications",
+  "introDescription": "Selected academic publications, conference papers, and research outputs from the Human-Centered Innovation Laboratory.",
+  "empty": "No publications are currently listed.",
+  "types": {
+    "journal": "Journal Article",
+    "conference": "Conference Paper",
+    "book": "Book",
+    "chapter": "Book Chapter",
+    "thesis": "Thesis",
+    "preprint": "Preprint",
+    "report": "Research Report"
+  }
+},
   "Research": {
     "metadataTitle": "Research & Projects",
     "introEyebrow": "Research & projects",
     "introTitle": "Ideas translated into action.",
     "introDescription": "Explore the laboratory's research initiatives and associated projects.",
-    "visitProject": "Visit project website",
+    "visitProject": "Visit WithYou Site",
     "projectDetails": "Project details",
     "comingSoon": "More information to follow"
   }

@@ -5,6 +5,7 @@ import Image from "next/image";
 
 import { projects, site, type Locale } from "@/data/site";
 import { PageIntro, TextLink } from "@/components/ui";
+import RichText from "@/components/RichText";
 
 export async function generateMetadata({
   params,
@@ -66,14 +67,15 @@ export default async function Research() {
 
                 <h2>{p.title}</h2>
 
-                <p>{p.description[locale]}</p>
+                <p>
+                  <RichText text={p.description[locale]} />
+                </p>
 
-                <span className="muted small">
-                  <p>
-                    {p.more_info?.[locale]}
+                {p.more_info?.[locale] && (
+                  <p className="muted small">
+                    <RichText text={p.more_info[locale]} />
                   </p>
-                  
-                </span>
+                )}
 
                 {/* Project Links */}
                 {p.title === "WithYou" && site.withYouUrl ? (
@@ -81,12 +83,14 @@ export default async function Research() {
                     {t("visitProject")}
                   </TextLink>
                 ) : p.href ? (
-                  <TextLink
-                    href={p.href}
-                    external={p.external}
-                  >
-                    {t("projectDetails")}
-                  </TextLink>
+                <TextLink
+                  href={p.href}
+                  external={p.external}
+                >
+                  {p.title === "Human Link"
+                    ? t("visitProject")
+                    : t("projectDetails")}
+                </TextLink>
                 ) : (
                   <span className="muted small">
                     {t("comingSoon")}

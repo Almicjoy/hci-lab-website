@@ -1,188 +1,291 @@
 
-import { Link } from "@/i18n/navigation";
 import Image from "next/image";
-
-import { ArrowRight, ArrowUpRight, Users } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
 
-import { Eyebrow, TextLink } from "@/components/ui";
-import { members, projects, site } from "@/data/site";
+import { ImageSlot, TextLink } from "@/components/ui";
+import {
+  activities,
+  heroImages,
+  news,
+  newsletter,
+  projects,
+  site,
+  type Locale,
+} from "@/data/site";
+
+const NEWS_LIMIT = 5;
+
+function dateParts(iso: string, locale: Locale) {
+  const d = new Date(`${iso}T00:00:00Z`);
+
+  return {
+    month: new Intl.DateTimeFormat(locale, {
+      timeZone: "UTC",
+      month: "short",
+    }).format(d),
+    day: String(d.getUTCDate()),
+    year: String(d.getUTCFullYear()),
+    short: iso.replaceAll("-", "."),
+  };
+}
 
 export default async function Home() {
-  const locale = (await getLocale()) as "en" | "ja";
+  const locale = (await getLocale()) as Locale;
   const t = await getTranslations("Home");
 
+  const latest = [...news]
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, NEWS_LIMIT);
+
+  const featured =
+    projects.find((p) => p.thumbnail) ?? projects[0];
+
+  const [main, ...side] = heroImages;
+
   return (
-    <>
-      {/* Hero Section */}
-      <section className="hero">
-        <div className="container hero-grid">
-          <div>
+    <main className="editorial-home">
+      <h1 className="sr-only">{site.name[locale]}</h1>
 
-            <h1>
-              {t("heroTitle")} <em>{t("heroHighlight")}</em>
-            </h1>
+      {/* Photographic Mosaic */}
+      {main && (
+        <section
+          className="home-mosaic container"
+          aria-label={site.name[locale]}
+        >
+          <figure className="home-mosaic-main">
+            <ImageSlot
+              src={main.src}
+              alt={main.alt[locale]}
+              label={`${t("placeholder")} · 1200 × 675`}
+              sizes="(max-width: 860px) 100vw, 720px"
+            />
+            <figcaption>{main.caption[locale]}</figcaption>
+          </figure>
 
-            <p className="hero-lede">{t("heroDescription")}</p>
-
-            <div className="hero-actions">
-              <Link
-                className="button button-light"
-                href="/research"
-              >
-                {t("exploreResearch")}
-                <ArrowRight size={18} />
-              </Link>
-
-              <Link
-                className="button button-outline"
-                href="/people"
-              >
-                {t("meetTeam")}
-              </Link>
-            </div>
-          </div>
-
-        <div className="hero-illustration">
-          <Image
-            src="/images/kyoto-people-white-transparent.png"
-            alt="Illustration of people collaborating, with Kyoto's skyline and landscape"
-            width={1100}
-            height={500}
-            priority
-            className="hero-illustration-image"
-          />
-        </div>
-        </div>
-
-      </section>
-
-      {/* Purpose Section */}
-      <section className="section container split-section">
-        <div>
-          <Eyebrow>{t("purposeEyebrow")}</Eyebrow>
-          <h2>{t("purposeTitle")}</h2>
-        </div>
-
-        <div>
-          <p className="large-copy">
-            {t("purposeDescription")}
-          </p>
-
-          <p className="muted">
-            {t("purposeDetail")}
-          </p>
-
-          <TextLink href="/about">
-            {t("moreAbout")}
-          </TextLink>
-        </div>
-      </section>
-
-      {/* Research & Projects Section */}
-      <section className="section section-tinted">
-        <div className="container">
-          <div className="section-heading">
-            <div>
-              <Eyebrow>{t("projectsEyebrow")}</Eyebrow>
-              <h2>{t("projectsTitle")}</h2>
-            </div>
-
-            <TextLink href="/research">
-              {t("allProjects")}
-            </TextLink>
-          </div>
-
-          <div className="cards">
-            {projects.map((p, i) => (
-              <article className="project-card" key={p.title}>
-                <div className={`project-visual visual-${i % 3}`}>
-                  <span className="visual-number">
-                    0{i + 1}
-                  </span>
-
-                  <span className="visual-shape" />
-                </div>
-
-                <div className="project-content">
-                  <span className="card-kicker">
-                    {p.category[locale]}
-                  </span>
-
-                  <h3>{p.title}</h3>
-                  <p>{p.description[locale]}</p>
-
-                  {p.title === "WithYou" && site.withYouUrl ? (
-                    <TextLink href={site.withYouUrl} external>
-                      {t("visitWithYou")}
-                    </TextLink>
-                  ) : p.href ? (
-                    <TextLink
-                      href={p.href}
-                      external={p.external}
-                    >
-                      {t("learnMore")}
-                    </TextLink>
-                  ) : (
-                    <span className="muted small">
-                      {t("comingSoon")}
-                    </span>
-                  )}
-                </div>
-              </article>
+          <div className="home-mosaic-side">
+            {side.slice(0, 2).map((img, i) => (
+              <figure key={i}>
+                <ImageSlot
+                  src={img.src}
+                  alt={img.alt[locale]}
+                  label={`${t("placeholder")} · 800 × 450`}
+                  sizes="(max-width: 860px) 50vw, 360px"
+                />
+                <figcaption>{img.caption[locale]}</figcaption>
+              </figure>
             ))}
           </div>
+        </section>
+      )}
+
+      {/* About the Laboratory */}
+      <section className="editorial-about">
+        <div className="container editorial-about-grid">
+          <div className="editorial-about-heading">
+            <p className="editorial-kicker">
+              {t("aboutPreview.label")}
+            </p>
+            <h2>{t("aboutPreview.title")}</h2>
+          </div>
+
+          <div className="editorial-about-copy">
+            <p className="editorial-lead">
+              {t("aboutPreview.lead")}
+            </p>
+            <p>{t("aboutPreview.description")}</p>
+
+            <TextLink href="/about">
+              {t("aboutPreview.linkText")}
+            </TextLink>
+          </div>
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="section container">
-        <div className="section-heading">
-          <div>
-            <Eyebrow>{t("peopleEyebrow")}</Eyebrow>
-            <h2>{t("peopleTitle")}</h2>
-          </div>
+      {/* News and Newsletter */}
+      <section className="container editorial-news-columns">
+        <div>
+          <h2 className="editorial-section-title">
+            {t("newsTitle")}
+          </h2>
 
-          <TextLink href="/people">
-            {t("fullTeam")}
-          </TextLink>
+          {latest.length > 0 ? (
+            <ul className="editorial-news-list">
+              {latest.map((item) => {
+                const d = dateParts(item.date, locale);
+
+                return (
+                  <li
+                    className="editorial-news-item"
+                    key={`${item.date}-${item.title.en}`}
+                  >
+                    <time
+                      className="editorial-news-date"
+                      dateTime={item.date}
+                    >
+                      <span>{d.month}</span>
+                      <strong>{d.day}</strong>
+                      <small>{d.year}</small>
+                    </time>
+
+                    <div className="editorial-news-body">
+                      <span
+                        className={`editorial-tag tone-${
+                          item.tone ?? "notice"
+                        }`}
+                      >
+                        {item.category[locale]}
+                      </span>
+
+                      <h3>{item.title[locale]}</h3>
+                      <p>{item.body[locale]}</p>
+
+                      {item.href && (
+                        <TextLink
+                          href={item.href}
+                          external={/^https?:/.test(item.href)}
+                        >
+                          {t("readMore")}
+                        </TextLink>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <p className="editorial-empty">
+              {t("noNews")}
+            </p>
+          )}
         </div>
 
-        <div className="member-grid">
-          {members.slice(0, 3).map((m, i) => (
-            <article className="member-card" key={i}>
-              <div className="member-avatar" aria-hidden="true">
-                <Users size={38} strokeWidth={1} />
-              </div>
+        {/* Newsletter */}
+        <aside
+          className="editorial-paper"
+          aria-label={t("newsletterKicker")}
+        >
+          <div className="editorial-paper-top">
+            {/* <span>{t("newsletterKicker")}</span> */}
+            <span>{newsletter.issue[locale]}</span>
+          </div>
 
-              <h3>{m.name}</h3>
+          <h2>{newsletter.title[locale]}</h2>
+          <p className="editorial-paper-lead">
+            {newsletter.summary[locale]}
+          </p>
 
-              <p className="member-role">
-                {m.role[locale]}
+          <h3>{t("inThisIssue")}</h3>
+
+          <ol>
+            {newsletter.topics.map((topic, i) => (
+              <li key={i}>{topic[locale]}</li>
+            ))}
+          </ol>
+
+          {newsletter.href ? (
+            <a
+              className="editorial-paper-link"
+              href={newsletter.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t("downloadPdf")} →
+            </a>
+          ) : (
+            <span className="editorial-paper-soon">
+              {t("pdfSoon")}
+            </span>
+          )}
+        </aside>
+      </section>
+
+      {/* Activities */}
+      <section className="container editorial-activities">
+        <h2 className="editorial-section-title">
+          {t("activitiesTitle")}
+        </h2>
+
+        <div className="editorial-activity-grid">
+          {activities.map((activity) => {
+            const d = dateParts(activity.date, locale);
+
+            return (
+              <article
+                className="editorial-activity"
+                key={`${activity.date}-${activity.title.en}`}
+              >
+                <div className="editorial-activity-image">
+                  <ImageSlot
+                    src={activity.image}
+                    alt={activity.title[locale]}
+                    label={`${t("placeholder")} · 4:3`}
+                    sizes="(max-width: 700px) 100vw, (max-width: 950px) 50vw, 350px"
+                  />
+                </div>
+
+                <div className="editorial-activity-meta">
+                  <span
+                    className={`editorial-tag tone-${
+                      activity.tone ?? "notice"
+                    }`}
+                  >
+                    {activity.category[locale]}
+                  </span>
+                  <time dateTime={activity.date}>
+                    {d.short}
+                  </time>
+                </div>
+
+                <h3>{activity.title[locale]}</h3>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Featured Research */}
+      {featured && (
+        <section className="editorial-feature">
+          <div className="container editorial-feature-grid">
+            <div>
+              <p className="editorial-kicker">
+                {t("featuredTitle")}
               </p>
-            </article>
-          ))}
-        </div>
-      </section>
 
-      {/* Collaboration Section */}
-      <section className="section cta-band">
-        <div className="container cta-inner">
-          <div>
-            <Eyebrow>{t("collaborateEyebrow")}</Eyebrow>
+              <h2>{featured.title}</h2>
+              <p>{featured.description[locale]}</p>
 
-            <h2>{t("collaborateTitle")}</h2>
+              <TextLink href="/research">
+                {t("allProjects")}
+              </TextLink>
+            </div>
+
+            {featured.thumbnail && (
+              <figure className="editorial-feature-figure">
+                <Image
+                  src={featured.thumbnail}
+                  alt={`${featured.title} logo`}
+                  width={240}
+                  height={240}
+                />
+
+                <figcaption>
+                  {featured.href && (
+                    <span>
+                      <TextLink
+                        href={featured.href}
+                        external={featured.external}
+                      >
+                        {t("visitWithYou")}
+                      </TextLink>
+                    </span>
+                  )}
+                </figcaption>
+              </figure>
+            )}
           </div>
-
-          <Link
-            className="button button-light"
-            href="/contact"
-          >
-            {t("getInTouch")}
-            <ArrowUpRight size={18} />
-          </Link>
-        </div>
-      </section>
-    </>
+        </section>
+      )}
+    </main>
   );
 }

@@ -1,16 +1,16 @@
 
 "use client";
 
-import { useState } from "react";
+import Image from "next/image";
+
 import { useLocale, useTranslations } from "next-intl";
-import type { Locale } from "@/data/site";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import {
+  Link,
+  usePathname,
+  useRouter,
+} from "@/i18n/navigation";
 
-import { Link, usePathname } from "@/i18n/navigation";
-import { site } from "@/data/site";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
-
-const links = [
+const navItems = [
   { href: "/", key: "home" },
   { href: "/about", key: "about" },
   { href: "/research", key: "research" },
@@ -20,103 +20,104 @@ const links = [
 ] as const;
 
 export function Header() {
-  const pathname = usePathname();
   const t = useTranslations("Navigation");
-  const [open, setOpen] = useState(false);
-  const locale = useLocale() as Locale;
+  const locale = useLocale();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  function changeLanguage(nextLocale: "en" | "ja") {
+    router.replace(pathname, { locale: nextLocale });
+  }
 
   return (
-    <header className="site-header">
-      <div className="container nav-wrap">
-        {/* Laboratory Branding */}
-        <Link
-          href="/"
-          className="brand"
-          onClick={() => setOpen(false)}
-          aria-label="Lab homepage"
-        >
-          <span className="brand-mark">
-            H<span>·</span>C
-          </span>
+    <header className="university-site-header">
+      {/* Level 1: Kyoto University */}
+      <div className="university-header-strip">
+        <div className="container university-header-inner">
+          <div
+            className="kyoto-university-logo"
+            aria-label="Kyoto University logo placeholder"
+          >
+            <div className="kyoto-university-logo">
+              <Image
+                src="/images/Kyoto_University_logo,_5.svg.webp"
+                alt="Kyoto University"
+                width={165}
+                height={46}
+                style={{ width: "100%", height: "100%", objectFit: "contain" }}
+              />
+            </div>
+          </div>
 
-          <span className="brand-copy">
-            <strong>{site.name[locale]}</strong>
-            <small>{site.university[locale]}</small>
-          </span>
-        </Link>
-
-        {/* Desktop Navigation */}
-        <nav className="desktop-nav" aria-label="Main navigation">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={pathname === link.href ? "active" : ""}
+          <div className="university-header-language">
+            <button
+              type="button"
+              className={locale === "en" ? "active" : ""}
+              onClick={() => changeLanguage("en")}
+              aria-pressed={locale === "en"}
             >
-              {t(link.key)}
-            </Link>
-          ))}
+              EN
+            </button>
 
-          {site.withYouUrl && (
-            <a
-              className="nav-external"
-              href={site.withYouUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <span aria-hidden="true">/</span>
+
+            <button
+              type="button"
+              className={locale === "ja" ? "active" : ""}
+              onClick={() => changeLanguage("ja")}
+              aria-pressed={locale === "ja"}
             >
-              WithYou
-              <ArrowUpRight size={14} />
-            </a>
-          )}
-
-          {/* Desktop Language Switcher */}
-          <LanguageSwitcher />
-        </nav>
-
-        {/* Mobile Menu Toggle */}
-        <button
-          className="menu-toggle"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          onClick={() => setOpen(!open)}
-        >
-          {open ? <X /> : <Menu />}
-        </button>
+              JA
+            </button>
+          </div>
+        </div>
       </div>
 
-      {/* Mobile Navigation */}
-      {open && (
+      {/* Level 2: HCI Lab identity */}
+      <div className="hci-header-band">
+        <div className="container hci-header-inner">
+          <Link href="/" className="hci-header-brand">
+            <div className="hci-header-logo" aria-hidden="true">
+              {/* HCI Lab logo goes here */}
+            </div>
+
+            <div className="hci-header-text">
+              <span className="hci-header-title">
+                {locale === "ja"
+                  ? "ヒューマン・センタード・イノベーション研究室"
+                  : "Human-Centered Innovation Laboratory"}
+              </span>
+
+              <span className="hci-header-subtitle">
+                HCI Lab
+              </span>
+            </div>
+          </Link>
+        </div>
+      </div>
+
+      {/* Level 3: Navigation */}
+      <div className="hci-nav-band">
         <nav
-          id="mobile-nav"
-          className="mobile-nav"
-          aria-label="Mobile navigation"
+          className="container hci-nav"
+          aria-label="Main navigation"
         >
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-            >
-              {t(link.key)}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const active = pathname === item.href;
 
-          {site.withYouUrl && (
-            <a
-              href={site.withYouUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setOpen(false)}
-            >
-              WithYou ↗
-            </a>
-          )}
-
-          {/* Mobile Language Switcher */}
-          <LanguageSwitcher />
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={active ? "active" : ""}
+                aria-current={active ? "page" : undefined}
+              >
+                {t(item.key)}
+              </Link>
+            );
+          })}
         </nav>
-      )}
+      </div>
     </header>
   );
 }
